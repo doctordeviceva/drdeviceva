@@ -593,7 +593,7 @@ export default function RepairPage() {
                     </Label>
                     <Input
                       id="phone"
-                      placeholder="(555) 123-4567"
+                      placeholder="(757) 342-3822"
                       value={contactInfo.phone}
                       onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                         setContactInfo({

@@ -19,7 +19,7 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: "Dr Device VA - Mobile Electronics Repair Service",
   description:
-    "Professional mobile pickup and return repair service for phones, tablets, and computers in Virginia. Convenient, reliable, and affordable electronics repair.",
+    "Professional mobile pickup and return repair service for phones, tablets, and computers in the DMV area (DC, Maryland, Virginia). Convenient, reliable, and affordable electronics repair.",
   generator: "v0.app",
 };
 

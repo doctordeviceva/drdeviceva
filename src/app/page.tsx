@@ -159,7 +159,7 @@ export default function HomePage() {
                   className="bg-accent/20 text-accent-foreground"
                 >
                   <MapPin className="w-3 h-3 mr-1" />
-                  Serving All of Virginia
+                  Serving the DMV Area
                 </Badge>
                 <h1 className="text-4xl lg:text-6xl font-bold text-foreground leading-tight font-serif">
                   Your Device Doctor,{" "}
@@ -585,7 +585,9 @@ export default function HomePage() {
                 </div>
                 <div>
                   <h4 className="font-semibold">Sarah M.</h4>
-                  <p className="text-sm text-muted-foreground">Richmond, VA</p>
+                  <p className="text-sm text-muted-foreground">
+                    Washington, DC
+                  </p>
                 </div>
               </div>
               <div className="flex space-x-1 mb-3">
@@ -607,9 +609,7 @@ export default function HomePage() {
                 </div>
                 <div>
                   <h4 className="font-semibold">Mike R.</h4>
-                  <p className="text-sm text-muted-foreground">
-                    Virginia Beach, VA
-                  </p>
+                  <p className="text-sm text-muted-foreground">Bethesda, MD</p>
                 </div>
               </div>
               <div className="flex space-x-1 mb-3">
@@ -631,7 +631,7 @@ export default function HomePage() {
                 </div>
                 <div>
                   <h4 className="font-semibold">Lisa K.</h4>
-                  <p className="text-sm text-muted-foreground">Norfolk, VA</p>
+                  <p className="text-sm text-muted-foreground">Arlington, VA</p>
                 </div>
               </div>
               <div className="flex space-x-1 mb-3">
@@ -684,7 +684,7 @@ export default function HomePage() {
                     <label className="text-sm font-medium">Phone Number</label>
                     <Input
                       type="tel"
-                      placeholder="(555) 123-4567"
+                      placeholder="(757) 342-3822"
                       value={contactForm.phone}
                       onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                         const value = e.target.value.replace(
@@ -803,9 +803,9 @@ export default function HomePage() {
                 </span>
               </Link>
               <p className="text-muted-foreground">
-                Professional mobile repair service for Virginia. We come to you
-                for convenient, reliable electronics repair throughout the
-                state.
+                Professional mobile repair service for the DMV area. We come to
+                you for convenient, reliable electronics repair throughout DC,
+                Maryland, and Virginia.
               </p>
             </div>
             <div className="space-y-4">
@@ -830,7 +830,7 @@ export default function HomePage() {
               <div className="space-y-2 text-muted-foreground">
                 <div className="flex items-center space-x-2">
                   <Phone className="w-4 h-4" />
-                  <span>(555) 123-TECH</span>
+                  <span>(757) 342-3822</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <Mail className="w-4 h-4" />
