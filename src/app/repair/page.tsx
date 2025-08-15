@@ -626,7 +626,7 @@ export default function RepairPage() {
                   </Label>
                   <Input
                     id="address"
-                    placeholder="Street address in Virginia"
+                    placeholder="Street address"
                     value={contactInfo.address}
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                       setContactInfo({

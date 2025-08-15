@@ -17,6 +17,7 @@ import {
   Laptop,
   MapPin,
   Clock,
+  Shield,
   Star,
   CheckCircle,
   Phone,
@@ -52,13 +53,43 @@ export default function HomePage() {
 
   const handleContactFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const phoneRegex = /^[\d\s\(\)\-]{10,15}$/;
+
+    if (!emailRegex.test(contactForm.email)) {
+      alert("Please enter a valid email address");
+      return;
+    }
+
+    if (!phoneRegex.test(contactForm.phone)) {
+      alert("Please enter a valid phone number (at least 10 digits)");
+      return;
+    }
+
+    if (contactForm.name.length < 2) {
+      alert("Please enter your full name");
+      return;
+    }
+
+    if (contactForm.address.length < 5) {
+      alert("Please enter a valid address");
+      return;
+    }
+
+    if (contactForm.deviceType === "") {
+      alert("Please select a device type");
+      return;
+    }
+
     const params = new URLSearchParams({
       deviceType: contactForm.deviceType,
-      name: contactForm.name,
-      phone: contactForm.phone,
-      email: contactForm.email,
-      address: contactForm.address,
-      issue: contactForm.issue,
+      name: contactForm.name.trim(),
+      phone: contactForm.phone.trim(),
+      email: contactForm.email.trim(),
+      address: contactForm.address.trim(),
+      issue: contactForm.issue.trim(),
     });
     window.location.href = `/repair?${params.toString()}`;
   };
@@ -174,15 +205,56 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
+            {/* Background gradient bubbles */}
             <div className="relative">
-              <div className="w-full h-96 bg-gradient-to-br from-primary/10 to-accent/10 rounded-2xl overflow-hidden">
-                <Image
-                  src="/repair.jpg"
-                  alt="Professional Device Repair"
-                  fill
-                  className="object-cover"
-                  priority
-                />
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-80 h-80 bg-gradient-to-br from-primary/20 to-accent/20 rounded-full blur-3xl opacity-60"></div>
+                <div className="absolute w-60 h-60 bg-gradient-to-tr from-accent/30 to-primary/30 rounded-full blur-2xl opacity-40 -translate-x-20 translate-y-10"></div>
+                <div className="absolute w-40 h-40 bg-gradient-to-bl from-primary/40 to-accent/40 rounded-full blur-xl opacity-50 translate-x-32 -translate-y-16"></div>
+              </div>
+
+              {/* Floating device icons */}
+              <div className="relative z-10 flex items-center justify-center h-96">
+                <div
+                  className="absolute animate-bounce"
+                  style={{ animationDelay: "0s", animationDuration: "3s" }}
+                >
+                  <div className="w-20 h-20 bg-primary/10 backdrop-blur-sm rounded-2xl flex items-center justify-center border border-primary/20 shadow-lg">
+                    <Smartphone className="w-10 h-10 text-primary" />
+                  </div>
+                </div>
+                <div
+                  className="absolute animate-bounce translate-x-24 -translate-y-12"
+                  style={{ animationDelay: "1s", animationDuration: "3s" }}
+                >
+                  <div className="w-16 h-16 bg-accent/10 backdrop-blur-sm rounded-2xl flex items-center justify-center border border-accent/20 shadow-lg">
+                    <Tablet className="w-8 h-8 text-accent" />
+                  </div>
+                </div>
+                <div
+                  className="absolute animate-bounce -translate-x-20 translate-y-8"
+                  style={{ animationDelay: "2s", animationDuration: "3s" }}
+                >
+                  <div className="w-18 h-18 bg-primary/15 backdrop-blur-sm rounded-2xl flex items-center justify-center border border-primary/25 shadow-lg p-4">
+                    <Laptop className="w-9 h-9 text-primary" />
+                  </div>
+                </div>
+                <div
+                  className="absolute animate-bounce translate-x-32 translate-y-20"
+                  style={{ animationDelay: "0.5s", animationDuration: "3s" }}
+                >
+                  <div className="w-12 h-12 bg-accent/15 backdrop-blur-sm rounded-xl flex items-center justify-center border border-accent/25 shadow-md">
+                    <Stethoscope className="w-6 h-6 text-accent" />
+                  </div>
+                </div>
+                <div
+                  className="absolute animate-bounce -translate-x-28 -translate-y-20"
+                  style={{ animationDelay: "1.5s", animationDuration: "3s" }}
+                >
+                  <div className="w-14 h-14 bg-primary/12 backdrop-blur-sm rounded-xl flex items-center justify-center border border-primary/22 shadow-md">
+                    <Shield className="w-7 h-7 text-primary" />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -598,23 +670,34 @@ export default function HomePage() {
                     <Input
                       placeholder="Enter your full name"
                       value={contactForm.name}
-                      onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                        setContactForm({ ...contactForm, name: e.target.value })
-                      }
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                        const value = e.target.value.replace(/[<>]/g, "");
+                        setContactForm({ ...contactForm, name: value });
+                      }}
+                      minLength={2}
+                      maxLength={50}
+                      pattern="[A-Za-z\s]+"
                       required
                     />
                   </div>
                   <div className="space-y-2">
                     <label className="text-sm font-medium">Phone Number</label>
                     <Input
+                      type="tel"
                       placeholder="(555) 123-4567"
                       value={contactForm.phone}
-                      onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                        const value = e.target.value.replace(
+                          /[^0-9()\-\s]/g,
+                          ""
+                        );
                         setContactForm({
                           ...contactForm,
-                          phone: e.target.value,
-                        })
-                      }
+                          phone: value,
+                        });
+                      }}
+                      pattern="[\d\s\(\)\-]+"
+                      maxLength={15}
                       required
                     />
                   </div>
@@ -625,9 +708,11 @@ export default function HomePage() {
                     type="email"
                     placeholder="your.email@example.com"
                     value={contactForm.email}
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                      setContactForm({ ...contactForm, email: e.target.value })
-                    }
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                      const value = e.target.value.toLowerCase();
+                      setContactForm({ ...contactForm, email: value });
+                    }}
+                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                     required
                   />
                 </div>
@@ -656,14 +741,17 @@ export default function HomePage() {
                       Pickup Address
                     </label>
                     <Input
-                      placeholder="Street address in Virginia"
+                      placeholder="Street address"
                       value={contactForm.address}
-                      onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                        const value = e.target.value.replace(/[<>]/g, "");
                         setContactForm({
                           ...contactForm,
-                          address: e.target.value,
-                        })
-                      }
+                          address: value,
+                        });
+                      }}
+                      minLength={5}
+                      maxLength={100}
                       required
                     />
                   </div>
@@ -676,9 +764,12 @@ export default function HomePage() {
                     placeholder="Tell us what's wrong with your device..."
                     className="min-h-[100px]"
                     value={contactForm.issue}
-                    onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
-                      setContactForm({ ...contactForm, issue: e.target.value })
-                    }
+                    onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {
+                      const value = e.target.value.replace(/[<>]/g, "");
+                      setContactForm({ ...contactForm, issue: value });
+                    }}
+                    minLength={10}
+                    maxLength={500}
                   />
                 </div>
                 <Button
