@@ -25,10 +25,21 @@ import {
 } from "@/components/ui";
 
 // EmailJS integration
-const sendEmail = async (formData: any) => {
+const sendEmail = async (formData: {
+  name: string;
+  phone: string;
+  email: string;
+  address: string;
+  deviceType: string;
+  deviceBrand: string;
+  deviceModel: string;
+  issue: string;
+  pickupTime: string;
+  orderId: string;
+}) => {
   try {
     // Send email to business
-    const businessEmailResponse = await fetch("/api/send-email", {
+    await fetch("/api/send-email", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -53,7 +64,7 @@ const sendEmail = async (formData: any) => {
     });
 
     // Send confirmation email to customer
-    const customerEmailResponse = await fetch("/api/send-email", {
+    await fetch("/api/send-email", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -73,7 +84,7 @@ const sendEmail = async (formData: any) => {
           <p><strong>Scheduled Pickup:</strong> ${formData.pickupTime}</p>
           <p><strong>Pickup Address:</strong> ${formData.address}</p>
           <h3>What's Next?</h3>
-          <p>We'll contact you within 30 minutes to confirm your appointment and provide a more specific pickup time.</p>
+          <p>We&apos;ll contact you within 30 minutes to confirm your appointment and provide a more specific pickup time.</p>
           <p>If you have any questions, please call us at (555) 123-TECH or email hello@drdeviceva.com</p>
           <p>Thank you for choosing Dr Device VA!</p>
         `,
@@ -284,8 +295,8 @@ export default function RepairPage() {
                 Order ID: {orderId}
               </CardDescription>
               <p className="text-muted-foreground mt-4">
-                We've sent you a confirmation email. We'll contact you within 30
-                minutes to confirm your appointment.
+                We&apos;ve sent you a confirmation email. We&apos;ll contact you
+                within 30 minutes to confirm your appointment.
               </p>
               <Button
                 onClick={() => (window.location.href = "/")}
@@ -307,7 +318,7 @@ export default function RepairPage() {
                   What device needs repair?
                 </CardTitle>
                 <CardDescription>
-                  Select the type of device you'd like us to fix
+                  Select the type of device you&apos;d like us to fix
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -443,8 +454,8 @@ export default function RepairPage() {
                       }
                     />
                     <p className="text-xs text-muted-foreground">
-                      Don't worry if you're not sure - we can identify it during
-                      pickup
+                      Don&apos;t worry if you&apos;re not sure - we can identify
+                      it during pickup
                     </p>
                   </div>
                 )}
@@ -479,7 +490,7 @@ export default function RepairPage() {
                   <DeviceIcon className="w-8 h-8 text-primary" />
                 </div>
                 <CardTitle className="text-2xl font-serif">
-                  What's wrong with your device?
+                  What&apos;s wrong with your device?
                 </CardTitle>
                 <CardDescription>
                   Select the issue that best describes your problem
@@ -558,7 +569,7 @@ export default function RepairPage() {
                   Schedule Your Pickup
                 </CardTitle>
                 <CardDescription>
-                  We'll contact you to confirm the appointment
+                  We&apos;ll contact you to confirm the appointment
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">

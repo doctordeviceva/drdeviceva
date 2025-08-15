@@ -7,12 +7,9 @@ interface RadioGroupProps {
   className?: string;
 }
 
-export const RadioGroup = ({
-  children,
-  value,
-  onValueChange,
-  className = "",
-}: RadioGroupProps) => <div className={`space-y-3 ${className}`}>{children}</div>;
+export const RadioGroup = ({ children, className = "" }: RadioGroupProps) => (
+  <div className={`space-y-3 ${className}`}>{children}</div>
+);
 
 interface RadioGroupItemProps {
   value: string;
@@ -35,4 +32,4 @@ export const RadioGroupItem = ({
     onChange={onChange}
     className="h-4 w-4 border-primary text-primary focus:ring-primary"
   />
-); 
+);

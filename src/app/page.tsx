@@ -17,15 +17,14 @@ import {
   Laptop,
   MapPin,
   Clock,
-  Shield,
   Star,
   CheckCircle,
   Phone,
   Mail,
   Calendar,
   Stethoscope,
-  ArrowRight,
 } from "@/components/ui";
+import Image from "next/image";
 
 export default function HomePage() {
   const [contactForm, setContactForm] = useState({
@@ -177,15 +176,12 @@ export default function HomePage() {
             </div>
             <div className="relative">
               <div className="w-full h-96 bg-gradient-to-br from-primary/10 to-accent/10 rounded-2xl overflow-hidden">
-                <img
+                <Image
                   src="/repair.jpg"
                   alt="Professional Device Repair"
-                  className="w-full h-full object-cover"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.style.display = "none";
-                    target.nextElementSibling?.classList.remove("hidden");
-                  }}
+                  fill
+                  className="object-cover"
+                  priority
                 />
               </div>
             </div>
@@ -352,7 +348,8 @@ export default function HomePage() {
               Transparent Pricing
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              No hidden fees. You know exactly what you'll pay before we start.
+              No hidden fees. You know exactly what you&apos;ll pay before we
+              start.
             </p>
           </div>
           <div className="max-w-2xl mx-auto">
@@ -525,9 +522,9 @@ export default function HomePage() {
                 ))}
               </div>
               <p className="text-muted-foreground">
-                "Incredible service! Dr Device VA picked up my broken MacBook,
-                fixed it perfectly, and returned it the same day. The
-                convenience factor is unmatched."
+                &ldquo;Incredible service! Dr Device VA picked up my broken
+                MacBook, fixed it perfectly, and returned it the same day. The
+                convenience factor is unmatched.&rdquo;
               </p>
             </Card>
 
@@ -549,9 +546,9 @@ export default function HomePage() {
                 ))}
               </div>
               <p className="text-muted-foreground">
-                "My iPhone screen was completely shattered. Dr Device VA made it
-                look brand new again. Fair pricing and excellent communication
-                throughout."
+                &ldquo;My iPhone screen was completely shattered. Dr Device VA
+                made it look brand new again. Fair pricing and excellent
+                communication throughout.&rdquo;
               </p>
             </Card>
 
@@ -571,9 +568,9 @@ export default function HomePage() {
                 ))}
               </div>
               <p className="text-muted-foreground">
-                "As a busy professional, I can't afford downtime. Their pickup
-                service saved me hours, and the repair quality exceeded my
-                expectations."
+                &ldquo;As a busy professional, I can&apos;t afford downtime.
+                Their pickup service saved me hours, and the repair quality
+                exceeded my expectations.&rdquo;
               </p>
             </Card>
           </div>
@@ -589,8 +586,8 @@ export default function HomePage() {
                 Schedule Your Repair
               </h2>
               <p className="text-xl text-muted-foreground">
-                Fill out the form below and we'll contact you within 30 minutes
-                to schedule pickup
+                Fill out the form below and we&apos;ll contact you within 30
+                minutes to schedule pickup
               </p>
             </div>
             <Card className="p-8">

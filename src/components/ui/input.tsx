@@ -2,7 +2,7 @@ import React from "react";
 
 interface InputProps {
   className?: string;
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
 export const Input = ({ className = "", ...props }: InputProps) => (
@@ -14,7 +14,7 @@ export const Input = ({ className = "", ...props }: InputProps) => (
 
 interface TextareaProps {
   className?: string;
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
 export const Textarea = ({ className = "", ...props }: TextareaProps) => (

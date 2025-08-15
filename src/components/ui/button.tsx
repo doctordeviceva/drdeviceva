@@ -7,7 +7,7 @@ interface ButtonProps {
   size?: "sm" | "md" | "lg";
   disabled?: boolean;
   onClick?: () => void;
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
 export const Button = ({
