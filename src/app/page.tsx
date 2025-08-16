@@ -187,7 +187,7 @@ export default function HomePage() {
                   className="text-lg px-8 bg-transparent"
                 >
                   <Phone className="w-5 h-5 mr-2" />
-                  Call Now
+                  <a href="tel:703-555-1212">Call Now</a>
                 </Button>
               </div>
               <div className="flex items-center space-x-8 pt-4">
@@ -432,10 +432,10 @@ export default function HomePage() {
                   <Smartphone className="w-8 h-8 text-primary-foreground" />
                 </div>
                 <h3 className="text-2xl font-bold text-foreground mb-2">
-                  iPhone 14 Screen Replacement
+                  Screen Replacement
                 </h3>
                 <p className="text-foreground">
-                  Cracked display replacement with genuine parts
+                  Cracked display replacement with quality parts
                 </p>
               </div>
 
@@ -451,13 +451,13 @@ export default function HomePage() {
                         Parts Cost
                       </div>
                       <div className="text-sm text-muted-foreground">
-                        Genuine iPhone 14 screen
+                        Quality replacement screen
                       </div>
                     </div>
                   </div>
                   <div className="text-right">
                     <div className="text-2xl font-bold text-foreground">
-                      $164
+                      $90
                     </div>
                   </div>
                 </div>
@@ -521,7 +521,7 @@ export default function HomePage() {
                   </div>
                   <div className="text-right">
                     <div className="text-3xl font-bold text-primary-foreground">
-                      $214
+                      $140
                     </div>
                   </div>
                 </div>
@@ -830,11 +830,11 @@ export default function HomePage() {
               <div className="space-y-2 text-muted-foreground">
                 <div className="flex items-center space-x-2">
                   <Phone className="w-4 h-4" />
-                  <span>(757) 342-3822</span>
+                  <span>+1 (703)-832-5532</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <Mail className="w-4 h-4" />
-                  <span>sa6ds1@gmail.com</span>
+                  <span>shawn@gmail.com</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <Clock className="w-4 h-4" />

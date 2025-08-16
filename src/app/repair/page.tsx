@@ -45,7 +45,7 @@ const sendEmail = async (formData: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        to: "sa6ds1@gmail.com",
+        to: "sa6ds1@gmail.com", // Replace with Shawns email
         subject: "New Repair Request - Dr Device VA",
         html: `
           <h2>New Repair Request</h2>
@@ -593,7 +593,7 @@ export default function RepairPage() {
                     </Label>
                     <Input
                       id="phone"
-                      placeholder="(757) 342-3822"
+                      placeholder="(555) 123-4567"
                       value={contactInfo.phone}
                       onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                         setContactInfo({
