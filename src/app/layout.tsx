@@ -21,6 +21,9 @@ export const metadata: Metadata = {
   description:
     "Professional mobile pickup and return repair service for phones, tablets, and computers in the DMV area (DC, Maryland, Virginia). Convenient, reliable, and affordable electronics repair.",
   generator: "v0.app",
+  icons: {
+    icon: "/logo.png",
+  },
 };
 
 export default function RootLayout({
