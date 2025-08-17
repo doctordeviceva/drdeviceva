@@ -22,6 +22,7 @@ import {
   Calendar,
   Stethoscope,
   CheckCircle,
+  Wrench,
 } from "@/components/ui";
 
 // EmailJS integration
@@ -45,8 +46,8 @@ const sendEmail = async (formData: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        to: "sa6ds1@gmail.com", // Replace with Shawns email
-        subject: "New Repair Request - Dr Device VA",
+        to: "shawnjangle@gmail.com",
+        subject: "New Repair Request - Doctor Device VA",
         html: `
           <h2>New Repair Request</h2>
           <p><strong>Customer Name:</strong> ${formData.name}</p>
@@ -71,9 +72,9 @@ const sendEmail = async (formData: {
       },
       body: JSON.stringify({
         to: formData.email,
-        subject: "Repair Request Confirmed - Dr Device VA",
+        subject: "Repair Request Confirmed - Doctor Device VA",
         html: `
-          <h2>Thank you for choosing Dr Device VA!</h2>
+          <h2>Thank you for choosing Doctor Device VA!</h2>
           <p>Your repair request has been received and confirmed.</p>
           <h3>Order Details:</h3>
           <p><strong>Order ID:</strong> ${formData.orderId}</p>
@@ -86,7 +87,7 @@ const sendEmail = async (formData: {
           <h3>What's Next?</h3>
           <p>We&apos;ll contact you within 30 minutes to confirm your appointment and provide a more specific pickup time.</p>
           <p>If you have any questions, please call us at (555) 123-TECH or email hello@drdeviceva.com</p>
-          <p>Thank you for choosing Dr Device VA!</p>
+          <p>Thank you for choosing Doctor Device VA!</p>
         `,
       }),
     });
@@ -252,7 +253,7 @@ export default function RepairPage() {
               <Stethoscope className="w-5 h-5 text-primary-foreground" />
             </div>
             <span className="text-xl font-bold text-foreground font-serif">
-              Dr Device VA
+              Doctor Device VA
             </span>
           </Link>
           <Button variant="outline" onClick={() => window.history.back()}>
@@ -286,7 +287,7 @@ export default function RepairPage() {
           {submitSuccess && (
             <Card className="p-8 text-center">
               <div className="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <CheckCircle className="w-8 h-8 text-green-600" />
+                <Wrench className="w-8 h-8 text-green-600" />
               </div>
               <CardTitle className="text-2xl font-serif text-green-600">
                 Request Submitted Successfully!
@@ -670,7 +671,7 @@ export default function RepairPage() {
 
                 <div className="bg-muted/50 p-4 rounded-lg">
                   <h4 className="font-medium mb-2 flex items-center">
-                    <CheckCircle className="w-4 h-4 text-primary mr-2" />
+                    <Wrench className="w-4 h-4 text-primary mr-2" />
                     Order Summary
                   </h4>
                   <div className="space-y-1 text-sm text-muted-foreground">

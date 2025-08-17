@@ -28,4 +28,5 @@ export {
   Star,
   Phone,
   Mail,
+  Wrench,
 } from "./icons";

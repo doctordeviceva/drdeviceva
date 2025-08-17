@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  /* Updated color tokens to blue and white theme for Dr Device VA */
+  /* Updated color tokens to blue and white theme for Doctor Device VA */
   --background: oklch(1 0 0); /* White background */
   --foreground: oklch(0.15 0 0); /* Dark text */
   --card: oklch(0.98 0.02 240); /* Light blue background */

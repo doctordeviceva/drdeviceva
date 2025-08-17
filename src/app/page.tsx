@@ -24,6 +24,7 @@ import {
   Mail,
   Calendar,
   Stethoscope,
+  Wrench,
 } from "@/components/ui";
 import Image from "next/image";
 
@@ -103,11 +104,13 @@ export default function HomePage() {
             href="/"
             className="flex items-center space-x-2 hover:opacity-80 transition-opacity"
           >
-            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-              <Stethoscope className="w-5 h-5 text-primary-foreground" />
-            </div>
+            <img
+              src="/logo.png"
+              alt="Doctor Device VA Logo"
+              className="w-8 h-8 rounded-lg object-contain bg-white"
+            />
             <span className="text-xl font-bold text-foreground font-serif">
-              Dr Device VA
+              Doctor Device VA
             </span>
           </Link>
           <nav className="hidden md:flex items-center space-x-6">
@@ -149,7 +152,7 @@ export default function HomePage() {
       </header>
 
       {/* Hero Section */}
-      <section className="relative py-20 lg:py-32 bg-gradient-to-br from-card to-background">
+      <section className="relative py-20 bg-gradient-to-br from-card to-background">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
@@ -192,15 +195,21 @@ export default function HomePage() {
               </div>
               <div className="flex items-center space-x-8 pt-4">
                 <div className="flex items-center space-x-2">
-                  <CheckCircle className="w-5 h-5 text-primary" />
+                  <MapPin className="w-5 h-5 text-primary" />
                   <span className="text-sm text-muted-foreground">
                     Free Pickup & Return
                   </span>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <CheckCircle className="w-5 h-5 text-primary" />
+                  <Shield className="w-5 h-5 text-primary" />
                   <span className="text-sm text-muted-foreground">
                     90-Day Warranty
+                  </span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Wrench className="w-5 h-5 text-primary" />
+                  <span className="text-sm text-muted-foreground">
+                    Affordable Pricing
                   </span>
                 </div>
               </div>
@@ -531,21 +540,21 @@ export default function HomePage() {
               <div className="mt-6 pt-4 border-t border-border">
                 <div className="grid grid-cols-2 gap-3 text-sm">
                   <div className="flex items-center space-x-2">
-                    <CheckCircle className="w-4 h-4 text-primary flex-shrink-0" />
+                    <Wrench className="w-4 h-4 text-primary flex-shrink-0" />
                     <span className="text-foreground">
                       Free pickup & return
                     </span>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <CheckCircle className="w-4 h-4 text-primary flex-shrink-0" />
+                    <Wrench className="w-4 h-4 text-primary flex-shrink-0" />
                     <span className="text-foreground">Genuine parts only</span>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <CheckCircle className="w-4 h-4 text-primary flex-shrink-0" />
+                    <Wrench className="w-4 h-4 text-primary flex-shrink-0" />
                     <span className="text-foreground">90-day warranty</span>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <CheckCircle className="w-4 h-4 text-primary flex-shrink-0" />
+                    <Wrench className="w-4 h-4 text-primary flex-shrink-0" />
                     <span className="text-foreground">Same-day service</span>
                   </div>
                 </div>
@@ -596,7 +605,7 @@ export default function HomePage() {
                 ))}
               </div>
               <p className="text-muted-foreground">
-                &ldquo;Incredible service! Dr Device VA picked up my broken
+                &ldquo;Incredible service! Doctor Device VA picked up my broken
                 MacBook, fixed it perfectly, and returned it the same day. The
                 convenience factor is unmatched.&rdquo;
               </p>
@@ -618,8 +627,8 @@ export default function HomePage() {
                 ))}
               </div>
               <p className="text-muted-foreground">
-                &ldquo;My iPhone screen was completely shattered. Dr Device VA
-                made it look brand new again. Fair pricing and excellent
+                &ldquo;My iPhone screen was completely shattered. Doctor Device
+                VA made it look brand new again. Fair pricing and excellent
                 communication throughout.&rdquo;
               </p>
             </Card>
@@ -684,7 +693,7 @@ export default function HomePage() {
                     <label className="text-sm font-medium">Phone Number</label>
                     <Input
                       type="tel"
-                      placeholder="(757) 342-3822"
+                      placeholder="703-832-5532"
                       value={contactForm.phone}
                       onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                         const value = e.target.value.replace(
@@ -799,7 +808,7 @@ export default function HomePage() {
                   <Stethoscope className="w-5 h-5 text-primary-foreground" />
                 </div>
                 <span className="text-xl font-bold font-serif">
-                  Dr Device VA
+                  Doctor Device VA
                 </span>
               </Link>
               <p className="text-muted-foreground">
@@ -834,7 +843,7 @@ export default function HomePage() {
                 </div>
                 <div className="flex items-center space-x-2">
                   <Mail className="w-4 h-4" />
-                  <span>shawn@gmail.com</span>
+                  <span>shawnjangle@gmail.com</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <Clock className="w-4 h-4" />
@@ -845,7 +854,7 @@ export default function HomePage() {
           </div>
           <div className="border-t mt-8 pt-8 text-center text-muted-foreground">
             <p>
-              &copy; 2025 Dr Device VA. All rights reserved. Licensed and
+              &copy; 2025 Doctor Device VA. All rights reserved. Licensed and
               insured mobile repair service.
             </p>
           </div>
