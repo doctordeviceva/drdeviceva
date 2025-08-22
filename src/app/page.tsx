@@ -586,75 +586,7 @@ export default function HomePage() {
               <span className="text-lg font-semibold">4.9/5 rating</span>
             </div>
           </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            <Card className="p-6">
-              <div className="flex items-center space-x-4 mb-4">
-                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                  <span className="text-primary font-semibold">SM</span>
-                </div>
-                <div>
-                  <h4 className="font-semibold">Sarah M.</h4>
-                  <p className="text-sm text-muted-foreground">
-                    Washington, DC
-                  </p>
-                </div>
-              </div>
-              <div className="flex space-x-1 mb-3">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-accent text-accent" />
-                ))}
-              </div>
-              <p className="text-muted-foreground">
-                &ldquo;Incredible service! Doctor Device VA picked up my broken
-                MacBook, fixed it perfectly, and returned it the same day. The
-                convenience factor is unmatched.&rdquo;
-              </p>
-            </Card>
 
-            <Card className="p-6">
-              <div className="flex items-center space-x-4 mb-4">
-                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                  <span className="text-primary font-semibold">MR</span>
-                </div>
-                <div>
-                  <h4 className="font-semibold">Mike R.</h4>
-                  <p className="text-sm text-muted-foreground">Bethesda, MD</p>
-                </div>
-              </div>
-              <div className="flex space-x-1 mb-3">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-accent text-accent" />
-                ))}
-              </div>
-              <p className="text-muted-foreground">
-                &ldquo;My iPhone screen was completely shattered. Doctor Device
-                VA made it look brand new again. Fair pricing and excellent
-                communication throughout.&rdquo;
-              </p>
-            </Card>
-
-            <Card className="p-6">
-              <div className="flex items-center space-x-4 mb-4">
-                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                  <span className="text-primary font-semibold">LK</span>
-                </div>
-                <div>
-                  <h4 className="font-semibold">Lisa K.</h4>
-                  <p className="text-sm text-muted-foreground">Arlington, VA</p>
-                </div>
-              </div>
-              <div className="flex space-x-1 mb-3">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-accent text-accent" />
-                ))}
-              </div>
-              <p className="text-muted-foreground">
-                &ldquo;As a busy professional, I can&apos;t afford downtime.
-                Their pickup service saved me hours, and the repair quality
-                exceeded my expectations.&rdquo;
-              </p>
-            </Card>
-          </div>
         </div>
       </section>
 
@@ -843,7 +775,7 @@ export default function HomePage() {
                 </div>
                 <div className="flex items-center space-x-2">
                   <Mail className="w-4 h-4" />
-                  <span>shawnjangle@gmail.com</span>
+                  <span>doctordeviceva@gmail.com</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <Clock className="w-4 h-4" />
