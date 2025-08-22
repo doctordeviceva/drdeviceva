@@ -39,6 +39,9 @@ const sendEmail = async (formData: {
   orderId: string;
 }) => {
   try {
+    // Helper function to add delay between emails
+    const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+
     // Send email to business
     await fetch("/api/send-email", {
       method: "POST",
@@ -64,6 +67,66 @@ const sendEmail = async (formData: {
       }),
     });
 
+    // Wait 600ms to avoid rate limiting
+    await delay(600);
+
+    // Send confirmation email to doctordeviceva@gmail.com
+    await fetch("/api/send-email", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        to: "doctordeviceva@gmail.com",
+        subject: "Repair Request Confirmation - Doctor Device VA",
+        html: `
+          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f8f9fa;">
+            <div style="text-align: center; margin-bottom: 30px;">
+              <h1 style="color: #2563eb; margin: 0;">🩺 Doctor Device VA</h1>
+              <p style="color: #6b7280; margin: 10px 0;">New Repair Request Received</p>
+            </div>
+            
+            <div style="background: white; padding: 30px; border-radius: 15px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+              <div style="text-align: center; margin-bottom: 25px;">
+                <div style="font-size: 48px; margin-bottom: 15px;">📋</div>
+                <h2 style="color: #1e40af; margin: 0;">New Repair Request</h2>
+                <p style="color: #6b7280; margin: 10px 0;">A customer has submitted a repair request</p>
+              </div>
+              
+              <div style="background: #f0f9ff; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #2563eb;">
+                <h3 style="color: #1e40af; margin: 0 0 15px 0;">👤 Customer Information</h3>
+                <p style="margin: 8px 0;"><strong>Name:</strong> <span style="color: #2563eb; font-weight: bold;">${formData.name}</span></p>
+                <p style="margin: 8px 0;"><strong>Phone:</strong> <span style="color: #2563eb; font-weight: bold;">${formData.phone}</span></p>
+                <p style="margin: 8px 0;"><strong>Email:</strong> <span style="color: #2563eb; font-weight: bold;">${formData.email}</span></p>
+                <p style="margin: 8px 0;"><strong>Address:</strong> ${formData.address}</p>
+              </div>
+              
+              <div style="background: #fef3c7; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #f59e0b;">
+                <h3 style="color: #92400e; margin: 0 0 15px 0;">📱 Device Details</h3>
+                <p style="margin: 8px 0;"><strong>Device:</strong> ${formData.deviceBrand} ${formData.deviceType} ${formData.deviceModel ? `(${formData.deviceModel})` : ""}</p>
+                <p style="margin: 8px 0;"><strong>Issue:</strong> ${formData.issue}</p>
+                <p style="margin: 8px 0;"><strong>Pickup Time:</strong> ${formData.pickupTime}</p>
+                <p style="margin: 8px 0;"><strong>Order ID:</strong> <span style="color: #92400e; font-weight: bold;">${formData.orderId}</span></p>
+              </div>
+              
+              <div style="background: #ecfdf5; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #10b981;">
+                <h4 style="color: #065f46; margin: 0 0 10px 0;">📞 Next Steps</h4>
+                <p style="color: #065f46; margin: 0; line-height: 1.5;">Please contact the customer during business hours to confirm their appointment and provide a specific pickup time.</p>
+              </div>
+              
+              <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #e5e7eb;">
+                <p style="color: #6b7280; margin: 0;">Request submitted at: <strong>${new Date().toLocaleString()}</strong></p>
+                <p style="color: #9ca3af; margin: 5px 0; font-size: 14px;">Time to get to work! 🔧</p>
+              </div>
+            </div>
+          </div>
+        `,
+      }),
+    });
+
+    // Wait another 600ms to avoid rate limiting
+    await delay(600);
+
     // Send confirmation email to customer
     await fetch("/api/send-email", {
       method: "POST",
@@ -74,20 +137,47 @@ const sendEmail = async (formData: {
         to: formData.email,
         subject: "Repair Request Confirmed - Doctor Device VA",
         html: `
-          <h2>Thank you for choosing Doctor Device VA!</h2>
-          <p>Your repair request has been received and confirmed.</p>
-          <h3>Order Details:</h3>
-          <p><strong>Order ID:</strong> ${formData.orderId}</p>
-          <p><strong>Device:</strong> ${formData.deviceBrand} ${
-          formData.deviceType
-        } ${formData.deviceModel ? `(${formData.deviceModel})` : ""}</p>
-          <p><strong>Issue:</strong> ${formData.issue}</p>
-          <p><strong>Scheduled Pickup:</strong> ${formData.pickupTime}</p>
-          <p><strong>Pickup Address:</strong> ${formData.address}</p>
-          <h3>What's Next?</h3>
-          <p>We&apos;ll contact you within 30 minutes to confirm your appointment and provide a more specific pickup time.</p>
-          <p>If you have any questions, please call us at (555) 123-TECH or email hello@drdeviceva.com</p>
-          <p>Thank you for choosing Doctor Device VA!</p>
+          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f8f9fa;">
+            <div style="text-align: center; margin-bottom: 30px;">
+              <h1 style="color: #2563eb; margin: 0;">🩺 Doctor Device VA</h1>
+              <p style="color: #6b7280; margin: 10px 0;">Your Device's Best Friend</p>
+            </div>
+            
+            <div style="background: white; padding: 30px; border-radius: 15px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+              <div style="text-align: center; margin-bottom: 25px;">
+                <div style="font-size: 48px; margin-bottom: 15px;">✅</div>
+                <h2 style="color: #059669; margin: 0;">Request Confirmed!</h2>
+                <p style="color: #6b7280; margin: 10px 0;">We're excited to help fix your device</p>
+              </div>
+              
+              <div style="background: #f0f9ff; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #2563eb;">
+                <h3 style="color: #1e40af; margin: 0 0 15px 0;">📱 Order Summary</h3>
+                <p style="margin: 8px 0;"><strong>Order ID:</strong> <span style="color: #2563eb; font-weight: bold;">${formData.orderId}</span></p>
+                <p style="margin: 8px 0;"><strong>Device:</strong> ${formData.deviceBrand} ${formData.deviceType} ${formData.deviceModel ? `(${formData.deviceModel})` : ""}</p>
+                <p style="margin: 8px 0;"><strong>Issue:</strong> ${formData.issue}</p>
+                <p style="margin: 8px 0;"><strong>Pickup:</strong> ${formData.pickupTime}</p>
+                <p style="margin: 8px 0;"><strong>Address:</strong> ${formData.address}</p>
+              </div>
+              
+              <div style="background: #fef3c7; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #f59e0b;">
+                <h4 style="color: #92400e; margin: 0 0 10px 0;">⏰ What Happens Next?</h4>
+                <p style="color: #92400e; margin: 0; line-height: 1.5;">We'll contact you during our regular business hours to confirm your appointment and provide a specific pickup time.</p>
+              </div>
+              
+              <div style="background: #fef3c7; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #f59e0b;">
+                <h4 style="color: #92400e; margin: 0 0 10px 0;">💡 Need Help?</h4>
+                <p style="color: #92400e; margin: 0; line-height: 1.5;">
+                  Call us: <strong>703-832-5532</strong><br>
+                  Email: <strong>doctordeviceva@gmail.com</strong>
+                </p>
+              </div>
+              
+              <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #e5e7eb;">
+                <p style="color: #6b7280; margin: 0;">Thank you for choosing Doctor Device VA! 🎉</p>
+                <p style="color: #9ca3af; margin: 5px 0; font-size: 14px;">We can't wait to get your device working perfectly again!</p>
+              </div>
+            </div>
+          </div>
         `,
       }),
     });
